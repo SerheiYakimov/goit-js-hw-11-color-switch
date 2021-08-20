@@ -17,22 +17,17 @@ refs.start.addEventListener('click', onStartColor);
 refs.stop.addEventListener('click', onStopColor);
 
 let timerId = null;
-refs.start.isActive = false;
+
+ refs.start.disabled = false;
 
 
 
 function onStartColor(e) {
     
-    // проверка, если тру, то выходим, если нет, продолжает исполнятся функция
-    if (refs.start.isActive) {
-        return
-    };
-    
-
-    refs.start.isActive = true;
+    refs.start.disabled = true;
 
     timerId = setInterval( setBodyBgColor, 1000);
-    console.log(refs.start.isActive);
+   
     
 };
 
@@ -50,5 +45,5 @@ function setBodyBgColor() {
 
 function onStopColor(e) {
     clearInterval(timerId);
-    refs.start.isActive = false;
+    refs.start.disabled = false;
 }
